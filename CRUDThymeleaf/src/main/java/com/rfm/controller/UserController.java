@@ -55,8 +55,19 @@ public class UserController {
 			user.setId(id);
 			return "update-user";
 		}
-		return null;
 
+		userRepository.save(user);
+		model.addAttribute("users", userRepository.findAll());
+		return "index";
+
+	}
+
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+		User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+		userRepository.delete(user);
+		model.addAttribute("users", userRepository.findAll());
+		return "index";
 	}
 
 }
