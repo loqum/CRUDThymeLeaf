@@ -1,4 +1,4 @@
-package com.rfm.pojo;
+package com.rfm.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +28,6 @@ public class User {
 
 	public User(@NotBlank(message = "Nombre obligatorio") String name,
 			@NotBlank(message = "Email obligatorio") String mail) {
-		super();
 		this.name = name;
 		this.mail = mail;
 	}

@@ -1,9 +1,14 @@
 package com.rfm.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.rfm.pojo.User;
+import com.rfm.entity.User;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {}
+public interface UserRepository extends CrudRepository<User, Long> {
+
+	List<User> findByName(String name);
+}
