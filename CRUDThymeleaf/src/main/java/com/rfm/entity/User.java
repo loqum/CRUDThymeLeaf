@@ -20,16 +20,16 @@ public class User {
 	private String name;
 
 	@NotBlank(message = "Email obligatorio")
-	private String mail;
+	private String email;
 
 	public User() {
 
 	}
 
 	public User(@NotBlank(message = "Nombre obligatorio") String name,
-			@NotBlank(message = "Email obligatorio") String mail) {
+			@NotBlank(message = "Email obligatorio") String email) {
 		this.name = name;
-		this.mail = mail;
+		this.email = email;
 	}
 
 }

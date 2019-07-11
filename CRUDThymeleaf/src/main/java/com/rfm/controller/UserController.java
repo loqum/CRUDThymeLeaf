@@ -3,12 +3,14 @@ package com.rfm.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rfm.entity.User;
 import com.rfm.repository.UserRepository;
@@ -18,6 +20,9 @@ import com.rfm.utils.UserNotFoundException;
 public class UserController {
 
 	private UserRepository userRepository;
+
+	@Autowired
+	MessageSource messageSource;
 
 	@Autowired
 	public UserController(UserRepository userRepository) {
@@ -67,6 +72,11 @@ public class UserController {
 		User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 		userRepository.delete(user);
 		model.addAttribute("users", userRepository.findAll());
+		return "index";
+	}
+
+	@RequestMapping("/")
+	public String staticResource() {
 		return "index";
 	}
 

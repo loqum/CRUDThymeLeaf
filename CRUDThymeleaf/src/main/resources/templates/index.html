@@ -7,8 +7,14 @@
 <meta charset="utf-8" />
 </head>
 <body>
+	<div
+		style="text-align: right; padding: 5px; margin: 5px 0px; background: #ccc;">
+		<a th:href="@{/index?lang=en}">English</a> &nbsp;|&nbsp; <a
+			th:href="@{/index?lang=es}">Español</a>
+	</div>
+
 	<div th:switch="${users}">
-		<h2 th:case="null">No users yet!</h2>
+		<h2 th:case="null" th:text="#{nousers}"></h2>
 		<div th:case="*">
 			<h2>Users</h2>
 			<table>

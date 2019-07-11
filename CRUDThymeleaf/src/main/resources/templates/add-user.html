@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="container my-5">
-            <h2 class="mb-5">New User</h2>
+            <h2 class="mb-5" th:text=#{adduser}>***</h2>
             <div class="row">
                 <div class="col-md-6">
                     <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
@@ -21,11 +21,11 @@
                                 <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
                                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                             </div>
-<!--                             <div class="form-group col-md-6">
+                             <div class="form-group col-md-6">
                                 <label for="email" class="col-form-label">Email</label>
                                 <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email">
                                 <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-                            </div> -->
+                            </div> 
                         </div>
                         <div class="row">
                             <div class="col-md-6 mt-5">
