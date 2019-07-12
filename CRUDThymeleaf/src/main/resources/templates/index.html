@@ -5,39 +5,41 @@
 <!--<link rel="stylesheet" href="../../../css/main-static.css"
 	th:href="@{/css/main.css}" /> -->
 <meta charset="utf-8" />
+
 </head>
+
 <body>
 	<div
 		style="text-align: right; padding: 5px; margin: 5px 0px; background: #ccc;">
-		<a th:href="@{/index?lang=en}">English</a> &nbsp;|&nbsp; <a
-			th:href="@{/index?lang=es}">Español</a>
+		<a th:href="@{/index?lang=en}" th:text="#{en}"></a> &nbsp;|&nbsp; <a
+			th:href="@{/index?lang=es}" th:text="#{es}"></a>
 	</div>
 
 	<div th:switch="${users}">
-		<h2 th:case="null" th:text="#{nousers}"></h2>
+		<h2 th:case="null" th:text="#{no.users}"></h2>
 		<div th:case="*">
 			<h2>Users</h2>
 			<table>
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Edit</th>
-						<th>Delete</th>
+						<th th:text="#{name}"></th>
+						<th th:text="#{email}"></th>
+						<th th:text="#{edit}"></th>
+						<th th:text="#{delete}"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="user : ${users}">
 						<td th:text="${user.name}"></td>
 						<td th:text="${user.email}"></td>
-						<td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
-						<td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+						<td><a th:href="@{/edit/{id}(id=${user.id})}" th:text="#{edit}"></a></td>
+						<td><a th:href="@{/delete/{id}(id=${user.id})}" th:text="#{delete}"></a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p>
-			<a href="/signup">Add a new user</a>
+			<a href="/signup" th:text="#{add.new.user}"></a>
 		</p>
 	</div>
 </body>

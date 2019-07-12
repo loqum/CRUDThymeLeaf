@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rfm.entity.User;
 import com.rfm.repository.UserRepository;
@@ -19,6 +18,7 @@ import com.rfm.utils.UserNotFoundException;
 @Controller
 public class UserController {
 
+	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
@@ -72,11 +72,6 @@ public class UserController {
 		User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 		userRepository.delete(user);
 		model.addAttribute("users", userRepository.findAll());
-		return "index";
-	}
-
-	@RequestMapping("/")
-	public String staticResource() {
 		return "index";
 	}
 

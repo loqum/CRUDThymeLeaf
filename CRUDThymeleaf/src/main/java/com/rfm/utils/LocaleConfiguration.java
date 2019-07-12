@@ -15,26 +15,18 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Configuration
 public class LocaleConfiguration implements WebMvcConfigurer {
 
-	@Bean(name = "localeResolver")
+	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver slr = new SessionLocaleResolver();
 		slr.setDefaultLocale(Locale.US);
 		return slr;
 	}
 
-	@Bean(name = "messageResource")
-	public MessageSource getMessageResource() {
-		ReloadableResourceBundleMessageSource messageResource = new ReloadableResourceBundleMessageSource();
-		messageResource.setBasename("classpath:i18n/messages");
-		messageResource.setDefaultEncoding("UTF-8");
-		return messageResource;
-	}
-	
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
-	    LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-	    localeChangeInterceptor.setParamName("lang");
-	    return localeChangeInterceptor;
+		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+		localeChangeInterceptor.setParamName("lang");
+		return localeChangeInterceptor;
 	}
 
 	@Override
